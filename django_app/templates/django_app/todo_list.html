@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todoer - Personal ToDo App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-md">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">Todoer</h1>
+
+        <!-- Add new todo form -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <form method="post" class="flex flex-col space-y-4">
+                {% csrf_token %}
+                <textarea
+                    name="content"
+                    placeholder="Add a new todo..."
+                    class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                    rows="3"
+                    required
+                ></textarea>
+                <button
+                    type="submit"
+                    class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md transition duration-200"
+                >
+                    Add Todo
+                </button>
+            </form>
+        </div>
+
+        <!-- Todo list -->
+        <div class="space-y-3">
+            {% for todo in todos %}
+                <div class="bg-white rounded-lg shadow-md p-4 {% if todo.is_done %}bg-gray-50{% endif %}">
+                    <div class="flex items-start space-x-3">
+                        <!-- Checkbox -->
+                        <form method="post" action="{% url 'toggle_todo' todo.id %}" class="flex-shrink-0 mt-1">
+                            {% csrf_token %}
+                            <button type="submit" class="focus:outline-none">
+                                {% if todo.is_done %}
+                                    <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                {% else %}
+                                    <div class="w-5 h-5 border-2 border-gray-300 rounded"></div>
+                                {% endif %}
+                            </button>
+                        </form>
+
+                        <!-- Todo content -->
+                        <div class="flex-grow min-w-0">
+                            <p class="text-gray-800 {% if todo.is_done %}line-through text-gray-500{% endif %} break-words">
+                                {{ todo.content }}
+                            </p>
+                            <p class="text-xs text-gray-500 mt-1">
+                                Created: {{ todo.created_at|date:"M d, Y H:i" }}
+                                {% if todo.is_done %}
+                                    | Completed: {{ todo.marked_as_done_at|date:"M d, Y H:i" }}
+                                {% endif %}
+                            </p>
+                        </div>
+
+                        <!-- Delete button -->
+                        <form method="post" action="{% url 'delete_todo' todo.id %}" class="flex-shrink-0"
+                              onsubmit="return confirm('Are you sure you want to delete this todo?')">
+                            {% csrf_token %}
+                            <button type="submit" class="text-red-500 hover:text-red-700 focus:outline-none">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" clip-rule="evenodd"></path>
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="bg-white rounded-lg shadow-md p-8 text-center">
+                    <p class="text-gray-500 text-lg">No todos yet!</p>
+                    <p class="text-gray-400 text-sm mt-2">Add your first todo above to get started.</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Stats -->
+        {% if todos %}
+            <div class="bg-white rounded-lg shadow-md p-4 mt-6">
+                <div class="text-center text-gray-600">
+                    <p class="text-sm">
+                        Total: {{ total_count }} | Completed: {{ completed_count }} | Remaining: {{ remaining_count }}
+                    </p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
