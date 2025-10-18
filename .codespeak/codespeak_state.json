@@ -63,7 +63,8 @@
         "external_apis": "external_apis.json",
         "commit_message": "Implement Todoer personal ToDo app with Django",
         "methods_to_test_raw": "methods_to_test_raw.json",
-        "methods_to_test": "methods_to_test.json"
+        "methods_to_test": "methods_to_test.json",
+        "test_reports": "test_reports.txt"
     },
     "phase_manager": {
         "history": [
@@ -102,6 +103,10 @@
             {
                 "checkpoint": "{\"run\":{\"id\":\"df4d0f46-2556-44bc-9fcc-cf8d017a388e\",\"kind\":\"build\"},\"phase_id\":\"AnalyzeAndPlanTests\",\"additional_id\":null}",
                 "timestamp": "2025-10-18T12:46:09.772515+00:00"
+            },
+            {
+                "checkpoint": "{\"run\":{\"id\":\"df4d0f46-2556-44bc-9fcc-cf8d017a388e\",\"kind\":\"build\"},\"phase_id\":\"GenerateAndRunTests\",\"additional_id\":null}",
+                "timestamp": "2025-10-18T12:48:01.498672+00:00"
             }
         ]
     }
