@@ -41,7 +41,23 @@
     },
     "phases_state": {
         "spec_file": "spec/main.cs.md",
-        "spec": "spec.processed.md"
+        "spec": "spec.processed.md",
+        "criteria": {
+            "console_application": false,
+            "desktop_application": false,
+            "embedded_application": false,
+            "has_django": true,
+            "has_javascript": true,
+            "has_node_js": false,
+            "has_python": true,
+            "has_server": true,
+            "has_sql_database": true,
+            "library": false,
+            "mobile_application": false,
+            "server": false,
+            "serverless_application": false,
+            "web_application": true
+        }
     },
     "phase_manager": {
         "history": [
@@ -52,6 +68,10 @@
             {
                 "checkpoint": "{\"run\":{\"id\":\"df4d0f46-2556-44bc-9fcc-cf8d017a388e\",\"kind\":\"build\"},\"phase_id\":\"ProcessSpec\",\"additional_id\":null}",
                 "timestamp": "2025-10-18T12:41:44.890118+00:00"
+            },
+            {
+                "checkpoint": "{\"run\":{\"id\":\"df4d0f46-2556-44bc-9fcc-cf8d017a388e\",\"kind\":\"build\"},\"phase_id\":\"EvaluateCriteria\",\"additional_id\":null}",
+                "timestamp": "2025-10-18T12:41:56.532635+00:00"
             }
         ]
     }
