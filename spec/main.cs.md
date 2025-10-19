@@ -1,9 +1,3 @@
-// This is a comment. This line is ignored.
-<!-- This is a multiline comment. 
-These lines are ignored too. -->
-
-// Feel free to un-comment the example spec below to try CodeSpeak in action:
-
 Todoer is a personal ToDo app.
 
 ### Tech Stack
