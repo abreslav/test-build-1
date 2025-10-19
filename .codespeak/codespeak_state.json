@@ -64,7 +64,8 @@
         "commit_message": "Implement Todoer personal ToDo app with Django",
         "methods_to_test_raw": "methods_to_test_raw.json",
         "methods_to_test": "methods_to_test.json",
-        "test_reports": "test_reports.txt"
+        "test_reports": "test_reports.txt",
+        "spec_diff": "--- +++ @@ -1,6 +1,3 @@-\n-\n-\n Todoer is a personal ToDo app.\n \n ### Tech Stack\n"
     },
     "phase_manager": {
         "history": [
@@ -115,6 +116,10 @@
             {
                 "checkpoint": "{\"run\":{\"id\":\"dcc74c98-6db0-403d-a834-735259ecefb3\",\"kind\":\"build\"},\"phase_id\":\"Init\",\"additional_id\":null}",
                 "timestamp": "2025-10-19T20:49:42.946400+00:00"
+            },
+            {
+                "checkpoint": "{\"run\":{\"id\":\"dcc74c98-6db0-403d-a834-735259ecefb3\",\"kind\":\"build\"},\"phase_id\":\"ProcessSpec\",\"additional_id\":null}",
+                "timestamp": "2025-10-19T20:49:42.999050+00:00"
             }
         ]
     }

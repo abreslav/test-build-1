@@ -1,6 +1,3 @@
-
-
-
 Todoer is a personal ToDo app.
 
 ### Tech Stack
